@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[ProductController::class,'index'] );
+
+
+
+
+Route::get('/products/create', [ProductController::class, 'create']);
+
+
+
+         Route::post('/products/store',[ProductController::class,'store']);
+
+
+Route::get('/products/edit/{id}', [ProductController::class, 'edit']);
+
+Route::put('/products/update/{id}', [ProductController::class, 'update']);
+
+Route::delete('/products/delete/{id}',[ProductController::class, 'destroy']);
